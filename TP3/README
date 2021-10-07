@@ -1,13 +1,16 @@
 # Bibliothèques
-* 
-*
+* stdio.h
+* string.h
+* stdlib.h
+* time.h
+
 
 # Références
-*
+* Un peu d'aide entre les différents groupes lors du TP
 *
 
 # Difficulté
-*
+* Moyen
 
 # Commentaires
 * 
