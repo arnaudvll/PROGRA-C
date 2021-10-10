@@ -42,5 +42,5 @@ int main() {
 //  Dans cet exercice nous devions répondre à trois sous question. Nous devions dans un premier temps calculer
 // le nombre de termes d'une chaine de caractère (grâce à une boucle for).
 // Dans un deuxième temps, nous devions recopier une chaine de caractère (encore grâce à une boucle for).
-// Enfin nous devions concaténer 2 chaines de caractères. Pour cela, nous avons crée une 3eme chaine et recopié successivement 
+// Enfin nous devions concaténer 2 chaines de caractères. Pour cela, nous avons créé une 3eme chaine et recopié successivement 
 // la premiere et la deuxieme dedans
