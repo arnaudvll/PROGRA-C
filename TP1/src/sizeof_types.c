@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> // Bibliotèque utilisée
 
 int main() {
     printf("%ld octets pour char\n", sizeof(char));
@@ -16,3 +16,5 @@ int main() {
     printf("%ld octets pour long double\n", sizeof(long double));
     return 0;
 }
+// Dans cet exercice, nous avons utilisé la commande "sizeof" qui permet de renvoyer la taille en octet des différentes
+// commandes de déclaration de variables

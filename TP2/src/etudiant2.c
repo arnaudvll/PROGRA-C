@@ -1,17 +1,20 @@
-#include <stdio.h>
+#include <stdio.h> // Bibliotèques utilisées
 #include <string.h>
 
 int main() {
+    // initialisation d'une structures avec différentes variables de nature différentes
     struct etudiant{
         char prenom;
         char nom;
         char rue;
         char ville;
-        short notes_c;
+        short notes_c; // short pour les chiffres
         short notes_sys;
     };
+
+    // création de 5 structures ( 1 pour chaque étudiant )
     struct etudiant arnaud;
-    strcpy(arnaud.prenom, "Arnaud");
+    strcpy(arnaud.prenom, "Arnaud"); //strcpy permet de copier les chaînes de caractère 
     strcpy(arnaud.nom, "A1");
     strcpy(arnaud.rue, "1");
     strcpy(arnaud.ville, "lyon");
@@ -50,13 +53,15 @@ int main() {
     esteban.notes_c = 6;
     esteban.notes_sys = 20;
     
+    // affichage des différentes informations pour chaque étudiant 
     printf("étudiant: %s, %s\n adresse: %s %s\n note en programmation en c: %hd: \n note en système d'exploitation: %hd\n", arnaud.nom, arnaud.prenom, arnaud.rue, arnaud.ville, arnaud.notes_c, arnaud.notes_sys);
     printf("étudiant: %s, %s\n adresse: %s %s\n note en programmation en c: %hd: \n note en système d'exploitation: %hd\n", bob.nom, bob.prenom, bob.rue, bob.ville, bob.notes_c, bob.notes_sys);
     printf("étudiant: %s, %s\n adresse: %s %s\n note en programmation en c: %hd: \n note en système d'exploitation: %hd\n", charles.nom, charles.prenom, charles.rue, charles.ville, charles.notes_c, charles.notes_sys);
     printf("étudiant: %s, %s\n adresse: %s %s\n note en programmation en c: %hd: \n note en système d'exploitation: %hd\n", denis.nom, denis.prenom, denis.rue, denis.ville, denis.notes_c, denis.notes_sys);
     printf("étudiant: %s, %s\n adresse: %s %s\n note en programmation en c: %hd: \n note en système d'exploitation: %hd\n", esteban.nom, esteban.prenom, esteban.rue, esteban.ville, esteban.notes_c, esteban.notes_sys);
     
-    return 0;
-    
+    return 0;  
 }
     
+// Dans cet execrice nous devions faire la même chose que dans le précédent mais en utilisant les structures.
+// NOus avons donc créer 6 structures, 1 pour chaque étudiant et 1 pour chaque variables

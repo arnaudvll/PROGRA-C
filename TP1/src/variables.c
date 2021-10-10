@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> // Bibliotèque utilisée
 
 int main() {
     char my_char_var = 'a';
@@ -29,7 +29,8 @@ int main() {
     printf("La valeur du double est %g\n", my_double_var);
     printf("La valeur du long double est %Lg\n", my_long_double_var);
     
-    return 0;
-    
+    return 0;  
 }
     
+// Dans cet exercice, on s'est entrainé à utilisé les différents types de base avec la déclaration de différentes variables
+// Nous avons aussi étudier comment s'affichait chaque type de base puisque c'est différent pour chaque type

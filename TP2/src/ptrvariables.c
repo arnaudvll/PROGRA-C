@@ -1,9 +1,9 @@
-#include <stdio.h>
+#include <stdio.h> // Bibliotèque utilisée
 
 int main() {
     //création de toutes les variables et de leurs pointeurs associés
     char my_char_var;
-    char* cptr = &my_char_var;
+    char* cptr = &my_char_var; // * correspon à un pointeur qui pointe l'adrese des variables
 
     short my_short_var = -12;
     short* sptr = &my_short_var;
@@ -48,3 +48,6 @@ int main() {
 
     return(0);
 }
+
+// Dans cet exercice nous avons affiché les valeurs des variables de différents types de base en utilisant 
+// cette fois-ci le pointeur de d'adresse *
