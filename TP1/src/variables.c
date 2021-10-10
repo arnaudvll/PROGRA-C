@@ -1,4 +1,4 @@
-#include <stdio.h> // Bibliotèque utilisée
+#include <stdio.h> // Bibliothèque utilisée
 
 int main() {
     char my_char_var = 'a';
@@ -32,5 +32,5 @@ int main() {
     return 0;  
 }
     
-// Dans cet exercice, on s'est entrainé à utilisé les différents types de base avec la déclaration de différentes variables
-// Nous avons aussi étudier comment s'affichait chaque type de base puisque c'est différent pour chaque type
+// Dans cet exercice, on s'est entrainé à utiliser les différents types de base avec la déclaration de différentes variables
+// Nous avons aussi vu comment afficher chaque type de base puisque c'est différent pour chaque type
