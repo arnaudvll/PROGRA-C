@@ -1,4 +1,4 @@
-#include <stdio.h> // Bibliotèques utilisées
+#include <stdio.h> // Bibliothèques utilisées
 #include <stdlib.h>
 #include <time.h>
 
