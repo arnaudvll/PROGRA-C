@@ -1,7 +1,7 @@
-#include <stdio.h> // Bibliotèque utilisée
+#include <stdio.h> // Bibliothèque utilisée
 
 int main() {
-    printf("bonjour le monde!\n"); // Affichage de "bonjour le monde lors du lancement du code dans le terminale"
+    printf("bonjour le monde!\n"); // Affichage de "bonjour le monde" lors du lancement du code dans le terminal
     return 0; // Convention
 }
 
