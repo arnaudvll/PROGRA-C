@@ -1,10 +1,10 @@
-#include <stdio.h> // Bibliotèque utilisée
+#include <stdio.h> // Bibliothèque utilisée
 
 int main() {
     int compter =  20;
     int ligne = 1;
     while(ligne < compter+1) {
-        int colonne = 2; // initialise colonne à 2
+        int colonne = 2; // on initialise colonne à 2 car on aura toujours un "#" à partir de la 2eme colonne
 
         // cas pour la première ligne
         if(ligne == 1) {
@@ -24,15 +24,15 @@ int main() {
             }   
         }
 
-        // les autres cas
+        // dans les autres cas
         else {
-            printf("*");
-            // On se penche sur les # qui se trouve entre 2 colonnes de *
+            printf("*"); // on affiche un "*" en début de ligne
+            // On se penche sur les # qui se trouvent entre 2 colonnes de *
             while(colonne < ligne) {
                 printf("#");
                 colonne++;
             }
-            printf("*\n");
+            printf("*\n"); // on affiche en fin de ligne un "*"
         }   
         ligne++;
     }
