@@ -1,20 +1,22 @@
-#include <stdio.h> // Bibliotèque utilisée
+#include <stdio.h> // Bibliothèque utilisée
 
-int main(){
+int main() {
     int i;
-    int k;
     int nombre[15];
-    int nb = 32763; // Nombre qui correspond à la valeur max que peut prendre une variable int
+    int nb = 15; // Nombre qui correspond à la valeur max que peut prendre une variable int
+    int nb2 = nb;
 
     for( i = 0; i < 15; i++ ){
-        nombre[i] = nb%2; // division euclienne par 2
+        nombre[i] = nb%2; // division euclidienne par 2
         nb = nb/2;  
     }
 
-    printf("Le nombre en B10 %i est en B2 : ",nb);
+    printf("Le nombre en B10 %i est en B2 : ", nb2);
 
-    for( k = 14; k >= 0; k-- ){
-        printf("%i",nombre[k]);
+    for( i = 14; i >= 0; i-- ){
+        printf("%i",nombre[i]);
     }
+
+    printf("\n");
     return(0);
 }
