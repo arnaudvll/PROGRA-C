@@ -1,4 +1,4 @@
-#include <stdio.h> // Bibliotèque utilisée
+#include <stdio.h> // Bibliothèque utilisée
 
 int main() {
     int num1 = 15;
@@ -6,6 +6,7 @@ int main() {
     char op = '*';
     int n;
     
+    // on crée une concordance entre op et la variable n car on ne peut pas utiliser de chaîne de caractère comme condition ppur switch
     if (op == '+') {
         n = 1;
     }
@@ -31,6 +32,7 @@ int main() {
         n = 8;
     }
     
+    // on effectue chaque opération demandée en fonction de la valeur de n
     switch (n) {
         case 1 : 
             printf("addition %d\n",num1+num2);
