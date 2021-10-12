@@ -2,7 +2,8 @@ i.  Bibliothèques: les bibliothèques standards
 - <stdio.h> 
 
 ii. Références: les URLs, les groupes
-- utilisation du cours d'introduction de programmation en c
+- Utilisation du cours d'introduction de programmation en c
+- Entraide avec certains groupes en séance
 
 iii. Difficulté: niveau de difficulté (facile, moyenne, difficile)
 - La difficulté était moyenne lors de ce TP
