@@ -36,20 +36,28 @@ int main() {
     switch (n) {
         case 1 : 
             printf("addition %d\n",num1+num2);
+            break;
         case 2 : 
             printf("soustraction %d\n",num1-num2);
+            break;
         case 3 :
             printf("multiplication %d\n",num1*num2);
+            break;
         case 4 :
             printf("division entière %d\n",num1/num2);
+            break;
         case 5 :
             printf("reste de la division euclidienne %d\n",num1%num2);
+            break;
         case 6 :
             printf("a et b %d\n",num1 && num2);
+            break;
         case 7 :
             printf("a ou b %d\n",num1 || num2);
+            break;
         case 8:
             printf("non a %d\n",!num1);
+            break;
     }
     return 0;
 }
