@@ -1,43 +1,53 @@
-#include <stdio.h>
-#include <stdlib.h> // bibliotheque du random
+#include <stdio.h> // Bibliothèque utilisée
+
 int main(){
-    char * tabl[10]; // declaration de notre tableau  initial contenant 100 cases
-    char * tabl2[10];
-    int a=0;
-    int b=0;
-    int nmb_nous, nmb_eux;
-    tabl[0]="yo";
-    tabl[1]="wesh";
-    tabl[2]="salut l'étudiant,";
-    tabl[3]="bonjour";
-    tabl[4]="yo";
-    tabl[5]="wesh";
-    tabl[6]="salut";
-    tabl[7]="bonjour";
-    tabl[8]="wesh";
-    tabl[9]="salut";    
-    char * test ="salut l'étudiant,";
-    for(nmb_nous = 0; test[nmb_nous]; nmb_nous++);
+    char* tab[10]; // declaration du tableau initial de taille 10
+    char* tab2[10]; // on crée un deuxième tableau de taille 10 qu'on utilisera pour mettre uniquement les phrases de même taille que la phrase à tester
+    int taille_test; // taille de la phrase à tester (qu'on définira plus tard)
+    int taille_phrase; // taille de la phrase dans le tableau d'origine
+    int a = 0;
+    int trouve = 0;
+
+    // initialisation des 10 phrases du tableau
+    tab[0] = "bonjour";
+    tab[1] = "je m'appelle";
+    tab[2] = "hello";
+    tab[3] = "comment ca va";
+    tab[4] = "je suis";
+    tab[5] = "d'accord";
+    tab[6] = "je vais";
+    tab[7] = "allez y";
+    tab[8] = "je fais";
+    tab[9] = "salut";    
+
+    // initalisation de la phrase à tester
+    char* test = "allez y"; 
+
+    for (taille_test = 0; test[taille_test]; taille_test++); // calcul de la taille de la phrase à tester
     
-    for(int i = 0; i < 10; i++){
-        for(nmb_eux = 0; tabl[i][nmb_eux] ; nmb_eux++);
-        if (nmb_eux == nmb_nous){
-            tabl2[a] = tabl[i];
+    for (int i = 0; i < 10; i++) { // on parcourt chaque phrase dans le tableau
+        for (taille_phrase = 0; tab[i][taille_phrase] ; taille_phrase++); // on calcule les tailles de chaque phrase dans le tableau
+        if (taille_phrase == taille_test) { // pour chaque phrase dans le tableau, si elle a la même taille que la phrase à tester
+            tab2[a] = tab[i]; // on remplit le 2ème tableau avec les phrases de même taille
             a++;
             continue;
         }
-    
     }
+    // on récupère dans la variable a le nombre de phrases dans tab2
     
-    for(int l=0;l<a;l++){
-        for(int m=0 ; m < nmb_nous ;m++){
-            if(tabl2[l][m] == test[m]){
-                if (m == nmb_nous-1){
-                    b++;
+    for (int i = 0; i < a; i++) { // indice pour parcourir tab2
+        for (int j = 0; j < taille_test; j++) { // indice pour parcourir la phrase à tester
+            if (tab2[i][j] == test[j]) { // on regarde, caractère par caractère, si les phrases sont égales 
+                if (j == taille_test-1) { // si on a testé le dernier caractère des 2 phrases à comparer et qu'ils sont égaux, alors la phrase à tester est dans le tableau
+                    printf("La phrase testée est dans le tableau\n");
+                    trouve = 1;
                 }
             }
         }
     }
-    printf("\nil y a %i phrases\n",b); 
+
+    if (trouve == 0) {
+        printf("La phrase testée n'est pas dans le tableau\n");
+    }
     return 0;
 }
