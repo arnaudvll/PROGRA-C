@@ -17,12 +17,12 @@ int main(){
     tabl[8]="wesh";
     tabl[9]="salut";    
     char * test ="salut l'étudiant,";
-    for(nmb_nous=0;test[nmb_nous];nmb_nous++);
+    for(nmb_nous = 0; test[nmb_nous]; nmb_nous++);
     
-    for(int i=0;i<10;i++){
-        for(nmb_eux=0;tabl[i][nmb_eux];nmb_eux++);
+    for(int i = 0; i < 10; i++){
+        for(nmb_eux = 0; tabl[i][nmb_eux] ; nmb_eux++);
         if (nmb_eux == nmb_nous){
-            tabl2[a]=tabl[i];
+            tabl2[a] = tabl[i];
             a++;
             continue;
         }
@@ -30,9 +30,9 @@ int main(){
     }
     
     for(int l=0;l<a;l++){
-        for(int m=0;m<nmb_nous;m++){
-            if(tabl2[l][m]==test[m]){
-                if (m==nmb_nous-1){
+        for(int m=0 ; m < nmb_nous ;m++){
+            if(tabl2[l][m] == test[m]){
+                if (m == nmb_nous-1){
                     b++;
                 }
             }
