@@ -1,51 +1,18 @@
-#include <stdio.h> // Bibliotèque utilisée
 
-int somme(int num1, int num2){
-    int y = num1 + num2;
-    printf("addition %d\n",y);
-    return 0;
-}
+int somme(int num1, int num2) ;
 
-int soustraction(int num1, int num2){
-    int y = num1 - num2;
-    printf("soustraction %d\n",y);
-    return 0;
-}
+int difference(int num1, int num2) ;
 
-int multiplication(int num1, int num2){
-    int y = num1 * num2;
-    printf("multiplication %d\n",y);
-    return 0;
-}
+int produit(int num1, int num2) ;
 
-int division_entiere(int num1, int num2){
-    int y = num1 / num2;
-    printf("division entière %d\n",y);
-    return 0;
-}
+int quotient(int num1, int num2) ;
 
+int modulo(int num1, int num2) ;
 
-int modulo(int num1, int num2){
-    int y = num1 % num2;
-    printf("reste de la division euclidienne %d\n",y);
-    return 0;
-}
+int et(int num1, int num2) ;
 
+int ou(int num1, int num2) ;
 
-int ET_logique(int num1, int num2){
-    int y = num1 && num2;
-    printf("a et b %d\n",y);
-    return 0;
-}
+int negation(int num1);
 
-int OU_logique(int num1, int num2){
-    int y = num1 || num2;
-    printf("a ou b %d\n",y);
-    return 0;
-}
-
-int NON_logique(int num1){
-    int y = !num1 ;
-    printf("non a %d\n",!y);
-    return 0;
-}
+    
