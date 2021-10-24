@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include "chercher.h"
+#include "chercherfichier.h"
 
 int main(int argc, char *argv[]){
     char nom_de_fichier[] = "fichier.txt";
