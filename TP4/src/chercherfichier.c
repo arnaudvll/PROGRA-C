@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include "chercher.h"
+#include "chercherfichier.h"
 
 char *lire_fichier(char *nom_de_fichier) {
     char *content_1 = NULL;
