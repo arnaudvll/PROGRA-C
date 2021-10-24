@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "operator.h"
 
-//https://stackoverflow.com/questions/7898215/how-to-clear-input-buffer-in-c a mettre en SOURCE
-
 int somme(int num1, int num2) {
     printf("addition %d\n",num1+num2);
     return 0;
