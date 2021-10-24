@@ -1,3 +1,11 @@
+#include <stdio.h> // en-têtes(headers)
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <string.h>
+#include "etudiant_bd.h"
+
 int main() {
     char nom_de_fichier[] = "etudiant.txt";
     char nom[20];
