@@ -5,6 +5,11 @@
  *
  */
 
+
+// Lien https://koor.fr/C/cstdio/fflush.wp
+// https://koor.fr/C/cstdio/fscanf.wp
+
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,8 +17,8 @@
 #include <sys/types.h>  
 #include <sys/socket.h>
 #include <netinet/in.h>
-
 #include "client.h"
+#include <math.h>
 
 /* 
  * Fonction d'envoi et de réception de messages
@@ -29,11 +34,30 @@ int envoie_recois_message(int socketfd) {
 
   // Demandez à l'utilisateur d'entrer un message
   char message[100];
-  printf("Votre message (max 1000 caracteres): ");
-  fgets(message, 1024, stdin);
-  strcpy(data, "message: ");
-  strcat(data, message);
+  printf("Pour faire un calcul (+ ou - ou x ou / ), commencez votre message par le symbole de l'opération souhaitez: ");
+  fgets(message, 1024, stdin); // On récupère les informations de notre message dans la variable message.
+
+
+  // Si les données rentrant par le client commence par une opération :
+  if (message[0] == '+' || message[0] == '-' || message[0] == '*' || message[0] == '/'){
+
+    // Calcul écrit par le client stocké dans data et commence par "calcule:"
+    strcpy(data, "calcule: ");
+    strcat(data, message);
+  }
+
+  // Sinon, pour les autres cas 
+  else {
+
+    // Message écrit par le client stocké dans data et commence par "message:"
+    strcpy(data, "message: ");
+    strcat(data, message);
+  }
+
   
+  
+  
+  // Envoie du message stocké dans data
   int write_status = write(socketfd, data, strlen(data));
   if ( write_status < 0 ) {
     perror("erreur ecriture");
@@ -45,16 +69,20 @@ int envoie_recois_message(int socketfd) {
 
 
   // lire les données de la socket
+  // Récepetion du message envoyé par le serveur avec la donné data
   int read_status = read(socketfd, data, sizeof(data));
   if ( read_status < 0 ) {
     perror("erreur lecture");
     return -1;
   }
 
+  // Affichage du message reçu, envoyé par le serveur
   printf("Message recu: %s\n", data);
  
   return 0;
 }
+
+
 
 int main() {
   int socketfd;
