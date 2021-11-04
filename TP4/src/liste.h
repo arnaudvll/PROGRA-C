@@ -1,4 +1,4 @@
-struct liste_couleurs {                
+struct couleurs {                
     char rouge; 
 
     char vert;
@@ -7,8 +7,13 @@ struct liste_couleurs {
 
     char alpha;
 
-};
-}                
+    struct couleurs *suivant;
 
-void insertion (struct couleur *, struct liste_couleurs *);                
+};
+
+struct liste_couleurs {
+    struct couleurs *premier;
+};            
+
+void insertion (struct couleurs *, struct liste_couleurs *);                
 void parcours (struct liste_couleurs *);
