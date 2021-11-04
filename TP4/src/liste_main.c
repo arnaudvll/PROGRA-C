@@ -1,7 +1,7 @@
 #include <stdio.h> // en-têtes(headers)
 #include <stdlib.h>
 #include <time.h>
-#include "repertoire.h"
+#include "liste.h"
 
 int main() {
     srand(time(NULL));
