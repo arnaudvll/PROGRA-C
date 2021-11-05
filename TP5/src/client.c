@@ -5,120 +5,88 @@
  *
  */
 
-#include <sys/types.h> 
-#include <sys/socket.h>
-//#include <sys/epoll.h>
-#include <netinet/in.h>
+
+// Lien https://koor.fr/C/cstdio/fflush.wp
+// https://koor.fr/C/cstdio/fscanf.wp
+
+
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+#include <sys/types.h>  
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include "client.h"
 #include <math.h>
-#include "serveur.h"
 
-/* renvoyer un message (*data) au client (client_socket_fd)
+/* 
+ * Fonction d'envoi et de réception de messages
+ * Il faut un argument : l'identifiant de la socket
  */
-int renvoie_message(int client_socket_fd, char *data) {
-  int data_size = write (client_socket_fd, (void *) data, strlen(data));
-      
-  if (data_size < 0) {
-    perror("erreur ecriture");
-    return(EXIT_FAILURE);
-  }
-}
+
+int envoie_recois_message(int socketfd) {
  
-int recois_numeros_calcule(char *data){
-
-  char * op = malloc(sizeof(op)); //Allocation de mémoire dynamique
-  float num1 ;
-  float num2;
-  char reste [20];
-  sscanf(data, "%*s %s %f %f", op, &num1, &num2);
-  double calc;
-  switch ( (char)*op){
-        case '+' : calc = num1+num2;
-        break;
-        
-        case '-' : calc = num1-num2; 
-        break;
-
-        case '*' : calc = num1*num2; 
-        break;
-
-        case '/' : calc = num1/num2; 
-        break;
-  }
-  return calc;
-}
-
-
-/* accepter la nouvelle connection d'un client et lire les données
- * envoyées par le client. En suite, le serveur envoie un message
- * en retour
- */
-int recois_envoie_message(int socketfd) {
-  struct sockaddr_in client_addr;
   char data[1024];
+  // la réinitialisation de l'ensemble des données
+  memset(data, 0, sizeof(data));
 
-  int client_addr_len = sizeof(client_addr);
- 
-  // nouvelle connection de client
-  int client_socket_fd = accept(socketfd, (struct sockaddr *) &client_addr, &client_addr_len);
-  if (client_socket_fd < 0 ) {
-    perror("accept");
-    return(EXIT_FAILURE);
+
+  // Demandez à l'utilisateur d'entrer un message
+  char message[100];
+  printf("Pour faire un calcul (+ ou - ou x ou / ), commencez votre message par le symbole de l'opération souhaitez: ");
+  fgets(message, 1024, stdin); // On récupère les informations de notre message dans la variable message.
+
+
+  // Si les données rentrant par le client commence par une opération :
+  if (message[0] == '+' || message[0] == '-' || message[0] == '*' || message[0] == '/'){
+
+    // Calcul écrit par le client stocké dans data et commence par "calcule:"
+    strcpy(data, "calcule: ");
+    strcat(data, message);
+  }
+
+  // Sinon, pour les autres cas 
+  else {
+
+    // Message écrit par le client stocké dans data et commence par "message:"
+    strcpy(data, "message: ");
+    strcat(data, message);
+  }
+
+  
+  
+  
+  // Envoie du message stocké dans data
+  int write_status = write(socketfd, data, strlen(data));
+  if ( write_status < 0 ) {
+    perror("erreur ecriture");
+    exit(EXIT_FAILURE);
   }
 
   // la réinitialisation de l'ensemble des données
   memset(data, 0, sizeof(data));
 
-  //lecture de données envoyées par un client
-  int data_size = read (client_socket_fd, (void *) data, sizeof(data));
-      
-  if (data_size < 0) {
+
+  // lire les données de la socket
+  // Récepetion du message envoyé par le serveur avec la donné data
+  int read_status = read(socketfd, data, sizeof(data));
+  if ( read_status < 0 ) {
     perror("erreur lecture");
-    return(EXIT_FAILURE);
-  }
-  
-  /*
-   * extraire le code des données envoyées par le client. 
-   * Les données envoyées par le client peuvent commencer par le mot "message :" ou un autre mot.
-   */
-
-  // Reception du meesage et affichage du message reçu
-  printf ("Message recu: %s\n", data);
-  char code[10];
-  sscanf(data, "%s:", code);
-
-  //Si le message commence par le mot: 'message:' 
-  //Renvoie le message stocké dans data vers le client
-  if (strcmp(code, "message:") == 0) {
-
-    // On créer une chaîne de caractère pour le message du serveur
-    char message_retour[100];
-    printf("Veuillez saisir un message pour le client: (max 1000 caracteres): ");
-
-    scanf("%[^\n]*", message_retour); // On met le "%" pour bien prendre en compte une phrase, sinon le message retourné n'est que le premier mot de la phrase.
-    renvoie_message(client_socket_fd, message_retour);
-
+    return -1;
   }
 
-  //Si le message commence par le mot: 'calcule:' 
-  if (strcmp(code, "calcule:") == 0) {           
-    float res;
-    res = recois_numeros_calcule(data);
-    sprintf(data, "%lf",res);
-    renvoie_message(client_socket_fd,(char *)data);
-  }
-
-  close(socketfd);
+  // Affichage du message reçu, envoyé par le serveur
+  printf("Message recu: %s\n", data);
+ 
+  return 0;
 }
 
-int main() {
 
+
+int main() {
   int socketfd;
   int bind_status;
-  int client_addr_len;
 
   struct sockaddr_in server_addr, client_addr;
 
@@ -127,12 +95,9 @@ int main() {
    */
   socketfd = socket(AF_INET, SOCK_STREAM, 0);
   if ( socketfd < 0 ) {
-    perror("Unable to open a socket");
-    return -1;
+    perror("socket");
+    exit(EXIT_FAILURE);
   }
-
-  int option = 1;
-  setsockopt(socketfd, SOL_SOCKET, SO_REUSEADDR, &option, sizeof(option));
 
   //détails du serveur (adresse et port)
   memset(&server_addr, 0, sizeof(server_addr));
@@ -140,18 +105,15 @@ int main() {
   server_addr.sin_port = htons(PORT);
   server_addr.sin_addr.s_addr = INADDR_ANY;
 
-  // Relier l'adresse à la socket
-  bind_status = bind(socketfd, (struct sockaddr *) &server_addr, sizeof(server_addr));
-  if (bind_status < 0 ) {
-    perror("bind");
-    return(EXIT_FAILURE);
+  //demande de connection au serveur
+  int connect_status = connect(socketfd, (struct sockaddr *) &server_addr, sizeof(server_addr));
+  if ( connect_status < 0 ) {
+    perror("connection serveur");
+    exit(EXIT_FAILURE);
   }
- 
-  // Écouter les messages envoyés par le client
-  listen(socketfd, 10);
 
-  //Lire et répondre au client
-  recois_envoie_message(socketfd);
+  // appeler la fonction pour envoyer un message au serveur
+  envoie_recois_message(socketfd);
 
-  return 0;
+  close(socketfd);
 }
