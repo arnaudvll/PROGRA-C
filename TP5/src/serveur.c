@@ -7,7 +7,7 @@
 
 #include <sys/types.h> 
 #include <sys/socket.h>
-//#include <sys/epoll.h>
+#include <sys/epoll.h>
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,19 +25,20 @@ int renvoie_message(int client_socket_fd, char *data) {
     perror("erreur ecriture");
     return(EXIT_FAILURE);
   }
+  return(0);
 }
 
 
  
-int recois_numeros_calcule(char *data){
-
+float recois_numeros_calcule(char *data){
+  char code[10];
   char op [3];
   float num1 ;
   float num2;
-  char reste [20];
-  sscanf(data, "%*s %s %f %f", op, &num1, &num2);
-  double calc;
-  switch ( op[0] ){
+  sscanf(data, "%s %*s %s %f %f", code, op, &num1, &num2); //extrait de data les informations voulues
+  float calc;
+  
+  switch ( op[0] ) {
         case '+' : calc = num1+num2;
         break;
         
@@ -90,27 +91,27 @@ int recois_envoie_message(int socketfd) {
   // Reception du meesage et affichage du message reçu
   printf ("Message recu: %s\n", data);
   char code[10];
-  sscanf(data, "%s:", code);
+  sscanf(data, "%s", code);
+  strcat(code, " :");
 
   //Si le message commence par le mot: 'message:' 
   //Renvoie le message stocké dans data vers le client
-  if (strcmp(code, "message:") == 0) {
+  if (strcmp(code, "message :") == 0) {
 
     // On créer une chaîne de caractère pour le message du serveur
     char message_retour[100];
-    printf("Veuillez saisir un message pour le client: (max 1000 caracteres): ");
+    printf("Veuillez saisir un message pour le client: (max 100 caracteres): ");
 
-    scanf("%[^\n]*", message_retour); // On met le "%" pour bien prendre en compte une phrase, sinon le message retourné n'est que le premier mot de la phrase.
+    fgets(message_retour, 100, stdin); // On met le "%" pour bien prendre en compte une phrase, sinon le message retourné n'est que le premier mot de la phrase.
     renvoie_message(client_socket_fd, message_retour);
 
   }
 
   //Si le message commence par le mot: 'calcule:' 
-  if (strcmp(code, "calcule:") == 0) {           
+  if (strcmp(code, "calcule :") == 0) {           
     float res;
-    res = recois_numeros_calcule(data);
-    sprintf(data, "%lf",res);
-    renvoie_message(client_socket_fd,(char *)data);
+    res = recois_numeros_calcule(data); //on effectue le calcul et on stocke le résultat
+    printf("calcule : %.2f", res); //on affiche le résultat coté serveur avec 2 décimales
   }
 
   close(socketfd);
@@ -157,4 +158,5 @@ int main() {
 
   return 0;
 }
+
 
