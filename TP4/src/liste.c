@@ -3,7 +3,6 @@
 #include <time.h>
 #include "liste.h"
 
-//https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/19733-les-listes-chainees
 
 void insertion (struct couleurs *couleur, struct liste_couleurs *liste) {
     struct couleurs *nouvelle_coul = malloc(sizeof(*nouvelle_coul));
