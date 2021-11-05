@@ -16,5 +16,7 @@
  * en retour
  */
 int recois_envoie_message(int socketfd);
+int renvoie_message(int client_socket_fd, char *data);
+float recois_numeros_calcule(char *data);
 
 #endif
