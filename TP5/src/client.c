@@ -20,6 +20,20 @@
 #include "client.h"
 #include <math.h>
 
+
+int envoie_operateur_numeros(char* data, char *message, int socketfd) {
+  // Calcul écrit par le client stocké dans data et commence par "calcule :"
+  strcat(data, message);
+  
+  // Envoi du message stocké dans data
+  int write_status = write(socketfd, data, strlen(data));
+  if ( write_status < 0 ) {
+    perror("erreur ecriture");
+    exit(EXIT_FAILURE);
+  }
+  return(0);
+}
+
 /* 
  * Fonction d'envoi et de réception de messages
  * Il faut un argument : l'identifiant de la socket
@@ -31,54 +45,44 @@ int envoie_recois_message(int socketfd) {
   // la réinitialisation de l'ensemble des données
   memset(data, 0, sizeof(data));
 
-
   // Demandez à l'utilisateur d'entrer un message
   char message[100];
-  printf("Pour faire un calcul (+ ou - ou x ou / ), commencez votre message par le symbole de l'opération souhaitez: ");
   fgets(message, 1024, stdin); // On récupère les informations de notre message dans la variable message.
-
+  char code[10];
+  sscanf(message, "%s", code);
+  strcat(code, " :");
 
   // Si les données rentrant par le client commence par une opération :
-  if (message[0] == '+' || message[0] == '-' || message[0] == '*' || message[0] == '/'){
-
-    // Calcul écrit par le client stocké dans data et commence par "calcule:"
-    strcpy(data, "calcule: ");
-    strcat(data, message);
+  if (strcmp(code, "calcule :") == 0) {  //(message[0] == 'c' && message[1] == 'a' && message[2] == 'l' && message[3] == 'c' && message[4] == 'u' && message[5] == 'l' && message[6] == 'e'){
+    envoie_operateur_numeros(data, message, socketfd);
   }
 
   // Sinon, pour les autres cas 
   else {
-
     // Message écrit par le client stocké dans data et commence par "message:"
-    strcpy(data, "message: ");
     strcat(data, message);
-  }
 
-  
-  
-  
-  // Envoie du message stocké dans data
-  int write_status = write(socketfd, data, strlen(data));
-  if ( write_status < 0 ) {
-    perror("erreur ecriture");
-    exit(EXIT_FAILURE);
-  }
-
-  // la réinitialisation de l'ensemble des données
-  memset(data, 0, sizeof(data));
+    // Envoie du message stocké dans data
+    int write_status = write(socketfd, data, strlen(data));
+    if ( write_status < 0 ) {
+      perror("erreur ecriture");
+      exit(EXIT_FAILURE);
+    }
+    // la réinitialisation de l'ensemble des données
+    memset(data, 0, sizeof(data));
 
 
-  // lire les données de la socket
-  // Récepetion du message envoyé par le serveur avec la donné data
-  int read_status = read(socketfd, data, sizeof(data));
-  if ( read_status < 0 ) {
-    perror("erreur lecture");
-    return -1;
-  }
+    // lire les données de la socket
+    // Réception du message envoyé par le serveur avec la donnée data
+    int read_status = read(socketfd, data, sizeof(data));
+    if ( read_status < 0 ) {
+      perror("erreur lecture");
+      return -1;
+    }
 
-  // Affichage du message reçu, envoyé par le serveur
-  printf("Message recu: %s\n", data);
- 
+    // Affichage du message reçu, envoyé par le serveur
+    printf("Message recu: %s\n", data);
+  } 
   return 0;
 }
 
