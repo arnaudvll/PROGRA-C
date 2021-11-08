@@ -15,7 +15,6 @@ int ecrire_dans_fichier(char *nom_de_fichier, char *message) {
     return 0;
 }
 
-int clear(void) {
+void clear(void) { //fonction qui permet, lorsqu'elle est exécutée, de stopper l'éxécution tant qu'un retour à la ligne n'a pas été entré par l'utilisateur
     while (getchar() != '\n');
 }
-
