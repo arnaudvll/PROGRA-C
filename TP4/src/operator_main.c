@@ -4,7 +4,7 @@
 int main() {
     int num1 = 15;
     int num2 = 5;
-    char op = '+';
+    char op = '*';
     int n;
     
     switch (op) {
