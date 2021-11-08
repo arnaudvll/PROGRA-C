@@ -1,6 +1,7 @@
 #include <stdio.h> // Bibliothèque utilisée
 #include "operator.h"
 
+//on réutilise les mêmes codes que pour operators2, en mettant sous forme de fonctions
 int somme(int num1, int num2) {
     printf("addition %d\n",num1+num2);
     return 0;
@@ -8,7 +9,7 @@ int somme(int num1, int num2) {
 
 int difference(int num1, int num2) {
     printf("soustraction %d\n",num1-num2);
-    //return 0;
+    return 0;
 };
 
 int produit(int num1, int num2) {
