@@ -7,6 +7,7 @@
 #include "etudiant_bd.h"
 
 int main() {
+    //introduction des différentes variables que l'on va demander
     char nom_de_fichier[] = "etudiant.txt";
     char nom[20];
     char prenom[20];
@@ -15,6 +16,7 @@ int main() {
     char note_c[3];
     char note_sys[3];
     
+    //on récolte les informations entrées par l'utilisateur dans une boucle for (pour 5 étudiants)
     for (int i = 0; i < 5; i++) {
         printf("Etudiant %d ", i);
         printf("Nom: ");
@@ -41,6 +43,7 @@ int main() {
         scanf("%s", note_sys);
         clear();
         
+        //on écrit dans le fichier chaque information
         ecrire_dans_fichier(nom_de_fichier, nom);
         ecrire_dans_fichier(nom_de_fichier, ", ");
         ecrire_dans_fichier(nom_de_fichier, prenom);
