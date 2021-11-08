@@ -24,7 +24,7 @@ int lire_dossier(char *dossier) {
     }
     
     closedir(dirp);
-    
+    return 0;
 }
 
 int lire_dossier_recursif(char *dossier) {          
@@ -67,10 +67,10 @@ int lire_dossier_recursif(char *dossier) {
     }
     
     closedir(dirp);
+    return 0;
 }
     
 int lire_dossier_iteratif(char *dossier) {
-    printf("ok");
     int compteur = 1;
     DIR *dirp = opendir(dossier);
         
@@ -78,7 +78,6 @@ int lire_dossier_iteratif(char *dossier) {
         perror("opendir");
         return(EXIT_FAILURE);
     }
-    printf("ok");
     struct dirent * ent;
     ent = readdir(dirp);
     char adresse_dir [256][256];
@@ -93,15 +92,13 @@ int lire_dossier_iteratif(char *dossier) {
     int cpt2 = 0;
     
     while(compteur != 0) {
-        printf("ok");
         DIR *dirp = opendir(dossier);
-        printf("ok");
 
             while(1) {
             ent = readdir(dirp);
             
             
-            if (ent == NULL) {
+            if (ent == NULL) { //dès qu'on a lu tout un dossier, on quite la boucle et on recommence avec un nouveau dossier
                 compteur--;
                 break;
             }
@@ -120,7 +117,7 @@ int lire_dossier_iteratif(char *dossier) {
                 strcpy(copie, dossier);
                 strcat(copie, "/");
                 strcat(copie, ent->d_name);
-                strcpy(adresse_dir[ptr_liste], copie);
+                strcpy(adresse_dir[ptr_liste], copie); //on rajoute en dernière position de la liste d'adresses 'à traiter' l'adresse du dossier pointé 
                 ptr_liste++;
                 compteur++;
             }
@@ -129,16 +126,8 @@ int lire_dossier_iteratif(char *dossier) {
             }
     
         closedir(dirp);
-        strcpy(dossier, adresse_dir[cpt2]);
+        strcpy(dossier, adresse_dir[cpt2]); //on remplace la dossier actuel par la première adresse trouvée dans la liste d'adresses à traiter, puis on recommence
         cpt2++; 
     }
+    return 0;
 }
-    
-    
-    
-    
-    
-    
-    
-    
-    
