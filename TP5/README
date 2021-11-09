@@ -24,3 +24,4 @@
 # Commentaires
 * 
 * Ce TP était plus complexe que les TPs précédents. En effet, dans ce TP nous avons vu de nouvelles notions et approché un nouveau type d'exercice, compléter des codes déjà commencés et cela s'est avéré assez complexe. En effet, nous devions comprendre comment fonctionnait le code avant même de le modifier et de le compléter et certaines lignes de ces codes sont parfois très complexe à assimiler.
+Nous n'avons pas réussi le dernier exercice car nous n'avons pas compris clairement l'énoncé. De plus, la bibliothèque sys/epoll.h ne fonctionne pas sur Mac, ce sur quoi nous travaillons tous les deux chez nous.
