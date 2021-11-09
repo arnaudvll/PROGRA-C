@@ -1,5 +1,12 @@
 # Bibliothèques
-
+- stdio
+- stdlib
+- fcntl
+- unistd 
+- string
+- sys/types
+- sys/stat
+- time
 
 
 # Références
@@ -8,5 +15,6 @@
 * https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c/19733-les-listes-chainees pour le 4.7
 
 # Difficulté
+Difficulté moyenne dans l'ensemble, sauf pour le dernier exercice, qui a demandé plus de recherches et d'investissement
 
 # Commentaires
