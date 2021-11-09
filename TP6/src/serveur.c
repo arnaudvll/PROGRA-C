@@ -101,11 +101,11 @@ int recois_envoie_message(int socketfd) {
   sscanf(data, "%s", code);
 
   char data2[1024];
-  strcpy(data2, data);
+  strcpy(data2, data); //on crée une copie de data pour ne pas modifier l'original
 
   const char *separator = ":, ";
   char *strToken = strtok(data2, separator);
-  strToken = strtok(NULL, separator);
+  strToken = strtok(NULL, separator); // on extrait le nombre de couleurs de data
   int nb_couleurs = atoi(strToken);
   
 
