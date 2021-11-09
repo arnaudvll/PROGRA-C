@@ -38,6 +38,7 @@ float recois_numeros_calcule(char *data){
   sscanf(data, "%s %*s %s %f %f", code, op, &num1, &num2); //extrait de data les informations voulues
   float calc;
   
+  //on effectue le calcul voulu
   switch ( op[0] ) {
         case '+' : calc = num1+num2;
         break;
@@ -88,7 +89,7 @@ int recois_envoie_message(int socketfd) {
    * Les données envoyées par le client peuvent commencer par le mot "message :" ou un autre mot.
    */
 
-  // Reception du meesage et affichage du message reçu
+  // Reception du message et affichage du message reçu
   printf ("Message recu: %s\n", data);
   char code[10];
   sscanf(data, "%s", code);
@@ -102,7 +103,7 @@ int recois_envoie_message(int socketfd) {
     char message_retour[100];
     printf("Veuillez saisir un message pour le client: (max 100 caracteres): ");
 
-    fgets(message_retour, 100, stdin); // On met le "%" pour bien prendre en compte une phrase, sinon le message retourné n'est que le premier mot de la phrase.
+    fgets(message_retour, 100, stdin); 
     renvoie_message(client_socket_fd, message_retour);
 
   }
