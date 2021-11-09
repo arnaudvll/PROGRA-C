@@ -123,7 +123,7 @@ int lire_dossier_iteratif(char *dossier) {
             }
     
         closedir(dirp);
-        strcpy(dossier, adresse_dir[cpt2]); //on remplace la dossier actuel par la première adresse trouvée dans la liste d'adresses à traiter, puis on recommence
+        strcpy(dossier, adresse_dir[cpt2]); //on remplace le dossier actuel par la première adresse trouvée dans la liste d'adresses à traiter, puis on recommence
         cpt2++; 
     }
     return 0;
