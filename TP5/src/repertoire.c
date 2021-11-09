@@ -71,7 +71,7 @@ int lire_dossier_recursif(char *dossier) {
 }
     
 int lire_dossier_iteratif(char *dossier) {
-    int compteur = 1;
+    int compteur = 1; //compteur qui sera nul lorsque tous les fichiers et dossiers auront été traités
     DIR *dirp = opendir(dossier);
         
     if (dirp == NULL) {
@@ -80,16 +80,12 @@ int lire_dossier_iteratif(char *dossier) {
     }
     struct dirent * ent;
     ent = readdir(dirp);
-    char adresse_dir [256][256];
-    int ptr_liste = 1;
+    char adresse_dir [256][256]; //ce tableau de tableau de char va accueillir les adresses des dossier 'à traiter'
+    int ptr_liste = 0; //compteur qui sert d'indice pour les adresses à traiter à rajouter
     char copie[256] = ""; //on crée une chaine de caractères de taille importante pour accueillir l'adresse complète
-    //on copie l'adresse complète dans la chaîne copie
-    strcpy(copie, dossier);
-    strcat(copie, "/");
-    strcat(copie, ent->d_name); 
-    strcpy(adresse_dir[0], copie);
+    
     closedir(dirp);
-    int cpt2 = 0;
+    int cpt2 = 0; //compteur qui sert d'indice pour traiter une à une les adresses de dossier restantes
     
     while(compteur != 0) {
         DIR *dirp = opendir(dossier);
@@ -121,8 +117,9 @@ int lire_dossier_iteratif(char *dossier) {
                 ptr_liste++;
                 compteur++;
             }
-            
-            printf("%s\n", ent->d_name);
+            else {
+                printf("%s\n", ent->d_name);
+            }
             }
     
         closedir(dirp);
