@@ -1,15 +1,27 @@
 # Bibliothèques
-* 
-*
+
+*include <string.h>
+*include <stdio.h>
+*include <stdlib.h>
+*include <unistd.h>
+*include <sys/types.h>  
+*include <sys/socket.h>
+*include <netinet/in.h>
+*include "client.h"
+*include <math.h>
+*include <dirent.h>
+*include <sys/epoll.h>
 
 # Références
-*
-*
+
+*https://koor.fr/C/cstdio/fflush.wp
+*https://koor.fr/C/cstdio/fscanf.wp
+*https://koor.fr/C/cstring/strcat.wp
 
 # Difficulté
-*
+
+* TP difficile 
 
 # Commentaires
 * 
-* 
-
+* Ce TP était plus complexe que les TPs précédents. En effet, dans ce TP nous avons vu de nouvelles notions et approché un nouveau type d'exercice, compléter des codes déjà commencés et cela s'est avéré assez complexe. En effet, nous devions comprendre comment fonctionnait le code avant même de le modifier et de le compléter et certaines lignes de ces codes sont parfois très complexe à assimiler.
