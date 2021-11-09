@@ -53,8 +53,8 @@ int envoie_recois_message(int socketfd) {
   strcat(code, " :");
 
   // Si les données rentrant par le client commence par une opération :
-  if (strcmp(code, "calcule :") == 0) {  //(message[0] == 'c' && message[1] == 'a' && message[2] == 'l' && message[3] == 'c' && message[4] == 'u' && message[5] == 'l' && message[6] == 'e'){
-    envoie_operateur_numeros(data, message, socketfd);
+  if (strcmp(code, "calcule :") == 0) {  
+    envoie_operateur_numeros(data, message, socketfd); //on envoie l'opérateur et les numéros au serveur pour le calcul
   }
 
   // Sinon, pour les autres cas 
