@@ -1,15 +1,19 @@
 # Bibliothèques
-* 
-*
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h> 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include "bmp.h"
 
 # Références
-*
-*
+
 
 # Difficulté
-*
+
+* TP difficile, impossible à terminer
 
 # Commentaires
 * 
-* 
-
+* Ce TP était le plus complexe de tous les TP  que nous avions effectués jusqu'à maintenant. En effet, dans ce TP nous avons vu de nouvelles notions et approché le même type d'exercice que le TP5 mais la difficulté était plus grande ici. En effet, nous devions comprendre comment fonctionnait le code mais celui-ci était bien plus complexe que ceux rencontrés depuis le début de l'année. Pour le dernier exercice nous avons tout essayé, nous avons fait plusieurs recherches sur internet mais en vain. Nous sommes dans l'incapacité de terminer ce TP.
