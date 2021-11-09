@@ -15,8 +15,7 @@
 * TP difficile, impossible à terminer pour nous
 
 # Commentaires
-* 
 * Ce TP était le plus complexe de tous les TP  que nous avions effectués jusqu'à maintenant. En effet, dans ce TP nous avons vu de nouvelles notions et approché le même type d'exercice que le TP5 mais la difficulté était plus grande ici. En effet, nous devions comprendre comment fonctionnait le code mais celui-ci était bien plus complexe que ceux rencontrés depuis le début de l'année.
 Pour le dernier exercice, la compilation avec make ne marchait pas meme en ayant rien changé aux programmes client et serveur.
 Nous obtenons l'erreur suivante: clang: error: linker command failed with exit code 1 (use -v to see invocation)  make: *** [client] Error 1
-Cette erreur empeche la compilation du fichier client, et on ne peut donc pas tester le programme.
+Cette erreur empeche la compilation du fichier client, et on ne peut donc pas tester le programme, ce qui nous a empeché de terminer le dernier exercice chez nous.
